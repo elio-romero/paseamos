@@ -22,7 +22,7 @@ class AppRouter {
             GoRoute(
               name: LoginPage.name,
               path: "/login",
-              builder: (context, state) => LoginPage(),
+              builder: (context, state) => const LoginPage(),
             ),
             GoRoute(
               name: WifiAP.name,

@@ -11,7 +11,7 @@ class WifiAP extends StatefulWidget {
 }
 
 class _MyAppState extends State<WifiAP> {
-  String _platformVersion = 'Unknown';
+  final String _platformVersion = 'Unknown';
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +64,8 @@ class _MyAppState extends State<WifiAP> {
     DhcpInfo dhcpInfo = await AndroidFlutterWifi.getDhcpInfo();
     String ipString = AndroidFlutterWifi.toIp(dhcpInfo.gateway!);
     String formedIp = AndroidFlutterWifi.getFormedIp(ipString);
-    print('Gateway: ${ipString}');
-    print('Formed ip: ${formedIp}');
+    print('Gateway: $ipString');
+    print('Formed ip: $formedIp');
   }
 
   void connectionTest() async {

@@ -58,18 +58,20 @@ class _LoginState extends State {
                 height: MiFlutterAppSizes.normalSpace,
               ),
               if (imageFile != null)
-                Expanded(
-                  child: Image.file(
-                    imageFile!,
-                    fit: BoxFit.cover,
-                  ),
+                // Flexible(
+                //   child: Image.network(
+                Image.network(
+                  imageFile!.path,
+                  height: size.height * 0.35,
+                  fit: BoxFit.cover,
                 ),
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 16.0, top: 16.0),
-                    child: FloatingActionButton(
+                    child: TextButton.icon(
                       onPressed: () async {
                         XFile? file = await ImagePicker()
                             .pickImage(source: ImageSource.gallery);
@@ -82,21 +84,23 @@ class _LoginState extends State {
                         }
                         // await selectFile();
                       },
-                      heroTag: 'media',
-                      tooltip: 'Pick Single Media from gallery',
-                      child: const Icon(Icons.photo_library),
+                      // heroTag: 'media',
+                      // tooltip: 'Pick Single Media from gallery',
+                      icon: const Icon(Icons.photo_library),
+                      label: const Text('Pick Single Media from gallery'),
                     ),
                   ),
                   if (_picker.supportsImageSource(ImageSource.camera))
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, top: 16.0),
-                      child: FloatingActionButton(
+                      child: TextButton.icon(
                         onPressed: () async {
                           await selectFile();
                         },
-                        heroTag: 'image2',
-                        tooltip: 'Take a Photo',
-                        child: const Icon(Icons.camera_alt),
+                        // heroTag: 'image2',
+                        // tooltip: 'Take a Photo',
+                        icon: const Icon(Icons.camera_alt),
+                        label: const Text('Take a Photo'),
                       ),
                     ),
                 ],
